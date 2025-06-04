@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <div class="section">
+      <h2>Saindo...</h2>
+      <p>Redirecionando para a tela de login.</p>
+    </div>
+  </main>
+
+  <script>
+    // Remove sessão e redireciona
+    sessionStorage.removeItem('loggedUser');
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Traduzir | Dicionário Wai Wai</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>Dicionário Wai Wai</h1>
+      <ul class="nav-links">
+        <li><button onclick="window.location.href='index.html'">Início</button></li>
+        <li><button onclick="window.location.href='cadastro.html'">Cadastro</button></li>
+        <li><button onclick="window.location.href='login.html'">Login</button></li>
+      </ul>
+
+      <!-- Menu do perfil com dropdown -->
+      <div class="profile-menu" id="profileMenu" style="display: none;">
+        <img src="profile.png" alt="Perfil" class="profile-pic" onclick="toggleDropdown()" />
+        <ul class="dropdown" id="dropdownMenu">
+          <li><button onclick="window.location.href='traduzir.html'">Traduzir</button></li>
+          <li><button onclick="window.location.href='sugerir.html'">Sugerir</button></li>
+          <li><button onclick="window.location.href='contato.html'">Contato</button></li>
+          <li><button onclick="logout()">Logout</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="section">
+    <h2>Traduzir Termo</h2>
+    <input type="text" id="translateInput" placeholder="Digite uma palavra..." />
+    <button onclick="translate()">Traduzir</button>
+    <div id="translationResult"></div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Dicionário Acadêmico Wai Wai. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
