@@ -14,259 +14,94 @@ body, html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1.logo {
+  color: white;
+  font-size: 24px;
+}
+
 h2 {
   margin-bottom: 20px;
   color: #4a0072;
 }
 
-/* Container para centralização */
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
+  align-items: start;
+  padding: 40px 20px;
+  min-height: 80vh;
   text-align: center;
 }
 
-/* Seção principal */
 .section {
-  max-width: 900px;
   width: 100%;
-  padding: 40px;
+  max-width: 500px;
+  padding: 30px;
   background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Botões e links */
-button, a.button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  user-select: none;
-}
-
-button:focus, a.button:focus {
-  outline: 3px solid #a349a4;
-  outline-offset: 2px;
-}
-
-button:hover, a.button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
 }
 
 /* Navbar */
 .navbar {
+  background-color: #4a0072;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #6a1b9a, #8e24aa);
-  padding: 1rem 2rem;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  flex-wrap: wrap;
 }
 
-.navbar h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.navbar ul {
+.nav-links {
+  display: flex;
+  gap: 10px;
   list-style: none;
-  display: flex;
-  gap: 20px;
 }
 
-.navbar a,
-.nav-links li button {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.navbar a:hover,
-.nav-links li button:hover {
-  text-decoration: underline;
-}
-
-.navbar a:focus,
-.nav-links li button:focus {
-  outline: 3px solid #a349a4;
-  outline-offset: 2px;
-}
-
-/* Menu do perfil (dropdown) */
-.profile-menu {
-  position: relative;
-}
-
-.profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  object-fit: cover;
-  transition: box-shadow 0.3s ease;
-}
-
-.profile-pic:hover, .profile-pic:focus {
-  box-shadow: 0 0 8px #a349a4;
-  outline: none;
-}
-
-.dropdown {
-  position: absolute;
+.nav-links button {
   background-color: white;
-  right: 0;
-  margin-top: 5px;
-  border-radius: 5px;
-  display: none;
-  flex-direction: column;
-  width: 150px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  z-index: 1000;
-  transition: opacity 0.3s ease;
-}
-
-.dropdown.show {
-  display: block;
-}
-.dropdown li {
-  padding: 10px 20px;
-}
-
-.dropdown li button {
-  background: none;
   border: none;
-  color: white;
-  font-size: 1rem;
-  text-align: left;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-links button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Inputs e botões */
+input[type="text"] {
   width: 100%;
-  user-select: none;
-}
-
-.dropdown li button:hover,
-.dropdown li button:focus {
-  background-color: #ad86b9;
-  outline: none;
-}
-
-.show {
-  display: flex;
-  opacity: 1;
-}
-
-/* Login */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 120px);
-  padding: 20px;
-}
-
-.login-box {
-  background-color: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  width: 320px;
-  text-align: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.login-box h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #4a0072;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 12px;
+  padding: 10px;
   margin: 10px 0;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-.login-box input:focus {
-  border-color: #6a0dad;
-  outline: none;
-}
-
-.login-box button {
-  width: 100%;
-  padding: 12px;
+button {
   background-color: #6a0dad;
   color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  user-select: none;
+  transition: background 0.3s;
 }
 
-.login-box button:hover,
-.login-box button:focus {
-  background-color: #5a0c9a;
-  outline: none;
+button:hover {
+  background-color: #4a0072;
 }
 
-/* Mensagens e links */
-.login-message {
-  margin-top: 15px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #6a0dad;
-}
-
-.login-message a {
-  color: #6a0dad;
-  text-decoration: none;
+#translationResult {
+  margin-top: 20px;
   font-weight: bold;
-}
-
-.login-message a:hover,
-.login-message a:focus {
-  text-decoration: underline;
-  outline: none;
-}
-
-/* Footer */
-.footer {
-  background: linear-gradient(to right, #6a1b9a, #a08ca5);
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 0.9rem;
+  color: #333;
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -274,74 +109,10 @@ button:hover, a.button:hover {
 
   .nav-links {
     flex-direction: column;
-    gap: 10px;
-    margin-top: 1rem;
+    width: 100%;
   }
 
-  .section {
+  .container {
     padding: 20px;
   }
-
-  .login-box {
-    width: 100%;
-  }
-
-  .dropdown {
-    width: 100%;
-    top: 60px;
-  }
-}
-
-/* Modo escuro */
-@media (prefers-color-scheme: dark) {
-  body, html {
-    background: #121212;
-    color: #e0e0e0;
-  }
-
-  .section, .login-box {
-    background-color: #1e1e1e;
-    color: #eee;
-  }
-
-  .navbar, .footer {
-    background: #2c2c2c;
-  }
-
-  .dropdown {
-    background: #3e3e3e;
-  }
-
-  .dropdown li button:hover,
-  .dropdown li button:focus {
-    background-color: #555;
-  }
-
-  button, a.button {
-    background-color: #8e24aa;
-  }
-
-  button:hover, a.button:hover,
-  button:focus, a.button:focus {
-    background-color: #6a1b9a;
-    outline: none;
-  }
-
-  .login-box input {
-    background-color: #2a2a2a;
-    color: white;
-    border-color: #444;
-  }
-
-  .login-message a {
-    color: #e1bfff;
-  }
-}
-.hidden {
-  display: none !important;
-  /* Se quiser uma animação suave, pode adicionar transições */
-  /* Exemplo:
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  */
 }

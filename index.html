@@ -5,122 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dicionário Acadêmico Wai Wai</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Usar defer para scripts que manipulam DOM -->
   <script src="script.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <script src="js/tradutor.js" defer></script>
 </head>
 <body>
   <header>
-    <nav class="navbar" role="navigation" aria-label="Menu principal">
-      <h1>Dicionário Wai Wai</h1>
-      <ul class="nav-links" id="navLinks" role="menubar">
-        <li role="none"><button role="menuitem" onclick="window.location.href='index.html'">Início</button></li>
-        <li role="none"><button role="menuitem" onclick="window.location.href='cadastro.html'">Cadastro</button></li>
-        <li role="none"><button role="menuitem" onclick="window.location.href='login.html'">Login</button></li>
+    <nav class="navbar">
+      <h1 class="logo">Dicionário Wai Wai</h1>
+      <ul class="nav-links">
+        <li><button onclick="showSection('inicio')">Início</button></li>
+        <li><button onclick="showSection('cadastro')">Cadastro</button></li>
+        <li><button onclick="showSection('login')">Login</button></li>
       </ul>
-
-      <!-- Menu do perfil com dropdown -->
-      <div class="profile-menu" id="profileMenu" style="display: none;">
-        <img 
-          src="profile.png" 
-          alt="Perfil do usuário" 
-          class="profile-pic" 
-          id="profilePic"
-          role="button"
-          tabindex="0"
-          aria-haspopup="true" 
-          aria-expanded="false" 
-          aria-controls="dropdownMenu"
-          onclick="toggleDropdown()" 
-          onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleDropdown(); }"
-        />
-        <ul 
-          class="dropdown" 
-          id="dropdownMenu" 
-          role="menu" 
-          aria-labelledby="profilePic" 
-          tabindex="-1"
-          onkeydown="handleDropdownKey(event)"
-        >
-          <li role="none"><button role="menuitem" onclick="window.location.href='traduzir.html'">Traduzir</button></li>
-          <li role="none"><button role="menuitem" onclick="window.location.href='sugerir.html'">Sugerir</button></li>
-          <li role="none"><button role="menuitem" onclick="window.location.href='contato.html'">Contato</button></li>
-          <li role="none"><button role="menuitem" onclick="logout()">Logout</button></li>
-        </ul>
-      </div>
     </nav>
   </header>
 
-  <main class="section">
-    <h2>Bem-vindo ao Dicionário Acadêmico Wai Wai</h2>
-    <p>Facilitando a inclusão linguística no ensino superior.</p>
-    <a class="button" href="traduzir.html">Começar a Traduzir</a>
+  <main class="container">
+    <!-- Seção Início -->
+    <section class="section" id="inicio">
+      <h2>Traduzir Palavra</h2>
+      <input type="text" id="translateInput" placeholder="Digite uma palavra" />
+      <button onclick="translate()">Traduzir</button>
+      <div id="translationResult"></div>
+    </section>
+
+    <!-- Seção Cadastro -->
+    <section class="section" id="cadastro" style="display: none;">
+      <h2>Sugerir Novo Termo</h2>
+      <input type="text" id="suggestPt" placeholder="Palavra em Português" />
+      <input type="text" id="suggestWai" placeholder="Palavra em Wai Wai" />
+      <button onclick="submitSuggestion()">Enviar Sugestão</button>
+    </section>
+
+    <!-- Seção Login -->
+    <section class="section" id="login" style="display: none;">
+      <h2>Área do Usuário</h2>
+      <p>Login em breve disponível.</p>
+    </section>
   </main>
-
-  <footer class="footer">
-    <p>&copy; 2025 Dicionário Acadêmico Wai Wai. Todos os direitos reservados.</p>
-  </footer>
-
-  <script>
-    // Função para abrir/fechar dropdown atualizando aria-expanded
-    function toggleDropdown() {
-      const dropdown = document.getElementById("dropdownMenu");
-      const profilePic = document.getElementById("profilePic");
-      if (!dropdown || !profilePic) return;
-
-      const isOpen = dropdown.classList.contains("show");
-      if (isOpen) {
-        dropdown.classList.remove("show");
-        profilePic.setAttribute("aria-expanded", "false");
-      } else {
-        dropdown.classList.add("show");
-        profilePic.setAttribute("aria-expanded", "true");
-        dropdown.focus();
-      }
-    }
-
-    // Fecha dropdown se clicar fora
-    window.addEventListener("click", function(event) {
-      const profileMenu = document.getElementById("profileMenu");
-      const dropdown = document.getElementById("dropdownMenu");
-      const profilePic = document.getElementById("profilePic");
-
-      if (!profileMenu || !dropdown || !profilePic) return;
-
-      if (!profileMenu.contains(event.target)) {
-        if (dropdown.classList.contains("show")) {
-          dropdown.classList.remove("show");
-          profilePic.setAttribute("aria-expanded", "false");
-        }
-      }
-    });
-
-    // Fecha dropdown ao pressionar ESC e gerencia navegação dentro do menu
-    function handleDropdownKey(event) {
-      const dropdown = event.currentTarget;
-      const profilePic = document.getElementById("profilePic");
-
-      if (event.key === "Escape") {
-        dropdown.classList.remove("show");
-        profilePic.setAttribute("aria-expanded", "false");
-        profilePic.focus();
-      }
-
-      // Navegação com setas dentro do menu
-      const focusableMenuItems = [...dropdown.querySelectorAll('button[role="menuitem"]')];
-      const currentIndex = focusableMenuItems.indexOf(document.activeElement);
-
-      if (event.key === "ArrowDown") {
-        event.preventDefault();
-        const nextIndex = (currentIndex + 1) % focusableMenuItems.length;
-        focusableMenuItems[nextIndex].focus();
-      } else if (event.key === "ArrowUp") {
-        event.preventDefault();
-        const prevIndex = (currentIndex - 1 + focusableMenuItems.length) % focusableMenuItems.length;
-        focusableMenuItems[prevIndex].focus();
-      }
-    }
-  </script>
 </body>
 </html>
