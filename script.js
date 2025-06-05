@@ -108,6 +108,7 @@ function loadSuggestions() {
 // Alternar menu dropdown
 function toggleDropdown() {
   const menu = document.getElementById('dropdownMenu');
+  if (!menu) return;
   menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
 
@@ -115,7 +116,7 @@ function toggleDropdown() {
 document.addEventListener('click', function (event) {
   const dropdown = document.getElementById('dropdownMenu');
   const profilePic = document.querySelector('.profile-pic');
-  if (dropdown && !dropdown.contains(event.target) && !profilePic.contains(event.target)) {
+  if (dropdown && !dropdown.contains(event.target) && (!profilePic || !profilePic.contains(event.target))) {
     dropdown.style.display = 'none';
   }
 });
@@ -130,22 +131,36 @@ function logout() {
 // Mostrar menu do perfil
 function showProfileMenu() {
   const profileMenu = document.getElementById('profileMenu');
+  const navLinks = document.querySelector('.nav-links');
   if (profileMenu) profileMenu.style.display = 'flex';
+  if (navLinks) navLinks.style.display = 'none'; // Esconde os links Início, Cadastro, Login quando logado
 }
 
-// Modo escuro
+// Modo escuro com ícone e aria-label dinâmicos
 function setupDarkModeToggle() {
   const darkModeToggle = document.getElementById('darkModeToggle');
-  const darkMode = localStorage.getItem('darkMode') === 'true';
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-  if (darkMode) {
+  if (isDarkMode) {
     document.body.classList.add('dark-mode');
+    if (darkModeToggle) {
+      darkModeToggle.textContent = '☀️';
+      darkModeToggle.setAttribute('aria-label', 'Desativar modo escuro');
+    }
+  } else {
+    if (darkModeToggle) {
+      darkModeToggle.textContent = '🌙';
+      darkModeToggle.setAttribute('aria-label', 'Ativar modo escuro');
+    }
   }
 
   if (darkModeToggle) {
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      const enabled = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', enabled);
+      darkModeToggle.textContent = enabled ? '☀️' : '🌙';
+      darkModeToggle.setAttribute('aria-label', enabled ? 'Desativar modo escuro' : 'Ativar modo escuro');
     });
   }
 }

@@ -73,17 +73,20 @@ body.dark-mode .message.success {
   list-style: none;
 }
 
-.nav-links button {
+/* Modificação: links como botões */
+.nav-links a {
   background-color: rgb(14, 3, 11);
   color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
   transition: background 0.3s;
 }
 
-.nav-links button:hover {
+.nav-links a:hover {
   background-color: #e0e0e0;
   color: black;
 }
