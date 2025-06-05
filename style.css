@@ -12,37 +12,37 @@ body, html {
   color: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s, color 0.3s;
 }
 
-h1.logo {
-  color: white;
-  font-size: 24px;
+/* Dark mode */
+body.dark-mode {
+  background: #121212;
+  color: #f0f0f0;
 }
 
-h2 {
-  margin-bottom: 20px;
-  color: #4a0072;
+body.dark-mode .navbar {
+  background-color: #222;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  padding: 40px 20px;
-  min-height: 80vh;
-  text-align: center;
+body.dark-mode .login-box,
+body.dark-mode .section,
+body.dark-mode input,
+body.dark-mode .dropdown {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
 }
 
-.section {
-  width: 100%;
-  max-width: 500px;
-  padding: 30px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+body.dark-mode button {
+  background-color: #333;
+  color: #fff;
 }
 
-/* Navbar */
+body.dark-mode button:hover {
+  background-color: #555;
+}
+
+/* Cabeçalho */
 .navbar {
   background-color: #4a0072;
   padding: 15px 20px;
@@ -50,6 +50,11 @@ h2 {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.navbar h1 {
+  color: white;
+  font-size: 24px;
 }
 
 .nav-links {
@@ -73,8 +78,29 @@ h2 {
   color: black;
 }
 
+/* Login/Cadastro box */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 80vh;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
 /* Inputs e botões */
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -118,6 +144,58 @@ button:hover {
   color: #155724;
 }
 
+/* Menu de perfil */
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  list-style: none;
+  padding: 10px;
+  z-index: 10;
+}
+
+.dropdown li {
+  margin: 5px 0;
+}
+
+.dropdown button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background-color: #eee;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #4a0072;
+  color: white;
+}
+
 /* Responsividade */
 @media (max-width: 600px) {
   .navbar {
@@ -130,7 +208,7 @@ button:hover {
     width: 100%;
   }
 
-  .container {
+  .login-container {
     padding: 20px;
   }
 }

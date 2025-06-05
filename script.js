@@ -4,14 +4,14 @@ function showSection(sectionId) {
   sections.forEach(section => section.style.display = 'none');
   const target = document.getElementById(sectionId);
   if (target) target.style.display = 'block';
-
   clearMessages();
-  
+
   if (sectionId === 'cadastro') {
     loadSuggestions();
   }
 }
 
+// Exibir mensagem
 function showMessage(text, isError = true) {
   const messageDiv = document.getElementById('message');
   if (!messageDiv) return;
@@ -20,6 +20,7 @@ function showMessage(text, isError = true) {
   messageDiv.className = isError ? 'message error' : 'message success';
 }
 
+// Limpar mensagens
 function clearMessages() {
   const messageDiv = document.getElementById('message');
   if (messageDiv) {
@@ -77,7 +78,6 @@ function submitSuggestion() {
   showMessage("Sugestão salva com sucesso!", false);
   ptInput.value = "";
   waiInput.value = "";
-
   loadSuggestions();
 }
 
@@ -97,3 +97,49 @@ function loadSuggestions() {
     suggestions.map(s => `<li><strong>PT:</strong> ${s.pt} — <strong>WAI:</strong> ${s.wai}</li>`).join("") +
     "</ul>";
 }
+
+// Alternar menu dropdown
+function toggleDropdown() {
+  const menu = document.getElementById('dropdownMenu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Logout
+function logout() {
+  sessionStorage.removeItem('loggedUser');
+  localStorage.removeItem('persistedUser');
+  window.location.href = 'login.html';
+}
+
+// Mostrar menu do perfil
+function showProfileMenu() {
+  const profileMenu = document.getElementById('profileMenu');
+  if (profileMenu) profileMenu.style.display = 'flex';
+}
+
+// Modo escuro
+function setupDarkModeToggle() {
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const darkMode = localStorage.getItem('darkMode') === 'true';
+
+  if (darkMode) {
+    document.body.classList.add('dark-mode');
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+  }
+}
+
+// Ao carregar a página
+window.onload = function () {
+  const loggedUser = sessionStorage.getItem('loggedUser') || localStorage.getItem('persistedUser');
+  if (loggedUser) {
+    sessionStorage.setItem('loggedUser', loggedUser);
+    showProfileMenu();
+  }
+  setupDarkModeToggle();
+};
