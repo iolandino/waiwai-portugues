@@ -8,17 +8,34 @@
 </head>
 <body>
 
-  <nav class="navbar">
-    <h1 class="logo">Mini-Dicionário Wai Wai</h1>
-    <ul class="nav-links">
-       <li><button onclick="showSection('index.html')">Início</button></li>
-      <li><button onclick="showSection('tradutor.html')">Tradutor</button></li>
-      <li><button onclick="showSection('cadastro.html')">Cadastro</button></li>
-    </ul>
-  </nav>
+  <!-- Cabeçalho com Navegação -->
+  <header>
+    <nav class="navbar">
+      <h1>Mini-Dicionário Wai Wai</h1>
+      <ul class="nav-links">
+        <li><button onclick="window.location.href='index.html'">Início</button></li>
+        <li><button onclick="window.location.href='cadastro.html'">Cadastro</button></li>
+        <li><button onclick="window.location.href='login.html'">Login</button></li>
+      </ul>
 
+      <!-- Botão de modo escuro -->
+      <button id="darkModeToggle" aria-label="Ativar modo escuro">🌙</button>
+
+      <!-- Menu do Perfil -->
+      <div class="profile-menu" id="profileMenu" style="display: none;">
+        <img src="profile.png" alt="Imagem de perfil" class="profile-pic" onclick="toggleDropdown()" />
+        <ul class="dropdown" id="dropdownMenu">
+          <li><button onclick="window.location.href='traduzir.html'">Traduzir</button></li>
+          <li><button onclick="window.location.href='sugerir.html'">Sugerir</button></li>
+          <li><button onclick="window.location.href='contato.html'">Contato</button></li>
+          <li><button onclick="logout()">Logout</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal -->
   <main class="container">
-    <!-- Seção Tradutor -->
     <section class="section" id="tradutor">
       <h2>Traduzir do Português para Wai Wai</h2>
       <input type="text" id="translateInput" placeholder="Digite a palavra em Português" />
@@ -27,7 +44,6 @@
       <div id="message"></div>
     </section>
 
-    <!-- Seção Cadastro -->
     <section class="section" id="cadastro" style="display: none;">
       <h2>Sugerir Novo Termo</h2>
       <input type="text" id="suggestPt" placeholder="Palavra em Português" />
@@ -38,6 +54,22 @@
     </section>
   </main>
 
+  <!-- Rodapé -->
+  <footer class="footer">
+    &copy; 2025 Dicionário Acadêmico Wai Wai. Todos os direitos reservados.
+  </footer>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
+  <script>
+    window.onload = function () {
+      const loggedUser = sessionStorage.getItem('loggedUser') || localStorage.getItem('persistedUser');
+      if (loggedUser) {
+        sessionStorage.setItem('loggedUser', loggedUser);
+        showProfileMenu();
+      }
+      setupDarkModeToggle();
+    };
+  </script>
 </body>
 </html>

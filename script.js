@@ -70,8 +70,15 @@ function submitSuggestion() {
     return;
   }
 
-  const suggestion = { pt, wai };
   let suggestions = JSON.parse(localStorage.getItem("suggestions")) || [];
+
+  const exists = suggestions.some(s => s.pt.toLowerCase() === pt.toLowerCase());
+  if (exists) {
+    showMessage("Essa sugestão já foi enviada.");
+    return;
+  }
+
+  const suggestion = { pt, wai };
   suggestions.push(suggestion);
   localStorage.setItem("suggestions", JSON.stringify(suggestions));
 
@@ -103,6 +110,15 @@ function toggleDropdown() {
   const menu = document.getElementById('dropdownMenu');
   menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
+
+// Fecha o menu dropdown ao clicar fora dele
+document.addEventListener('click', function (event) {
+  const dropdown = document.getElementById('dropdownMenu');
+  const profilePic = document.querySelector('.profile-pic');
+  if (dropdown && !dropdown.contains(event.target) && !profilePic.contains(event.target)) {
+    dropdown.style.display = 'none';
+  }
+});
 
 // Logout
 function logout() {

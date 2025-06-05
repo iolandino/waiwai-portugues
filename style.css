@@ -42,6 +42,16 @@ body.dark-mode button:hover {
   background-color: #555;
 }
 
+body.dark-mode .message.error {
+  background-color: #52161b;
+  color: #f8baba;
+}
+
+body.dark-mode .message.success {
+  background-color: #1d4d36;
+  color: #c8f7da;
+}
+
 /* Cabeçalho */
 .navbar {
   background-color: #4a0072;
@@ -122,16 +132,19 @@ button:hover {
   background-color: #4a0072;
 }
 
+/* Resultado da tradução */
 #translationResult {
   margin-top: 20px;
   font-weight: bold;
   color: #333;
 }
 
+/* Mensagens */
 .message {
   margin-top: 10px;
   padding: 10px;
   border-radius: 4px;
+  font-size: 0.95em;
 }
 
 .message.error {
@@ -169,6 +182,9 @@ button:hover {
   list-style: none;
   padding: 10px;
   z-index: 10;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
 }
 
 .dropdown li {
@@ -186,6 +202,29 @@ button:hover {
 
 .dropdown button:hover {
   background-color: #eee;
+}
+
+body.dark-mode .dropdown button:hover {
+  background-color: #333;
+}
+
+/* Seções */
+.section {
+  padding: 20px;
+  display: none;
+}
+
+/* Lista de sugestões */
+#suggestionsList {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #suggestionsList {
+  background-color: #2a2a2a;
 }
 
 /* Footer */
@@ -210,5 +249,10 @@ button:hover {
 
   .login-container {
     padding: 20px;
+  }
+
+  .dropdown {
+    right: auto;
+    left: 0;
   }
 }
