@@ -59,7 +59,7 @@ h2 {
 }
 
 .nav-links button {
-  background-color: white;
+  background-color: rgb(14, 3, 11);
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
@@ -77,12 +77,12 @@ input[type="text"] {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #161313;
 }
 
 button {
   background-color: #6a0dad;
-  color: white;
+  color: rgb(134, 17, 17);
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
