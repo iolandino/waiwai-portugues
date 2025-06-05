@@ -2,30 +2,28 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dicionário Acadêmico Wai Wai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-Dicionário Wai Wai</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">Dicionário Wai Wai</h1>
-      <ul class="nav-links">
-        <li><button onclick="showSection('inicio')">Início</button></li>
-        <li><button onclick="showSection('cadastro')">Cadastro</button></li>
-        <li><button onclick="showSection('login')">Login</button></li>
-      </ul>
-    </nav>
-  </header>
+
+  <nav class="navbar">
+    <h1 class="logo">Mini-Dicionário Wai Wai</h1>
+    <ul class="nav-links">
+      <li><button onclick="showSection('tradutor')">Tradutor</button></li>
+      <li><button onclick="showSection('cadastro')">Cadastro</button></li>
+    </ul>
+  </nav>
 
   <main class="container">
-    <!-- Seção Início -->
-    <section class="section" id="inicio">
-      <h2>Traduzir Palavra</h2>
-      <input type="text" id="translateInput" placeholder="Digite uma palavra" />
+    <!-- Seção Tradutor -->
+    <section class="section" id="tradutor">
+      <h2>Traduzir do Português para Wai Wai</h2>
+      <input type="text" id="translateInput" placeholder="Digite a palavra em Português" />
       <button onclick="translate()">Traduzir</button>
       <div id="translationResult"></div>
+      <div id="message"></div>
     </section>
 
     <!-- Seção Cadastro -->
@@ -34,13 +32,11 @@
       <input type="text" id="suggestPt" placeholder="Palavra em Português" />
       <input type="text" id="suggestWai" placeholder="Palavra em Wai Wai" />
       <button onclick="submitSuggestion()">Enviar Sugestão</button>
-    </section>
-
-    <!-- Seção Login -->
-    <section class="section" id="login" style="display: none;">
-      <h2>Área do Usuário</h2>
-      <p>Login em breve disponível.</p>
+      <div id="message"></div>
+      <div id="suggestionsList" style="margin-top: 20px;"></div>
     </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

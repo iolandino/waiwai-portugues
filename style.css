@@ -60,6 +60,7 @@ h2 {
 
 .nav-links button {
   background-color: rgb(14, 3, 11);
+  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
@@ -69,6 +70,7 @@ h2 {
 
 .nav-links button:hover {
   background-color: #e0e0e0;
+  color: black;
 }
 
 /* Inputs e botões */
@@ -82,7 +84,7 @@ input[type="text"] {
 
 button {
   background-color: #6a0dad;
-  color: rgb(134, 17, 17);
+  color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
@@ -98,6 +100,22 @@ button:hover {
   margin-top: 20px;
   font-weight: bold;
   color: #333;
+}
+
+.message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
 }
 
 /* Responsividade */
