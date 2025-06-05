@@ -6,13 +6,22 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
+/* Estrutura para body e html como flex container para layout vertical */
+html, body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(135deg, #6a0dad, #a349a4, #d3a3d8);
   color: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background 0.3s, color 0.3s;
+}
+
+body {
+  flex: 1 0 auto;
 }
 
 /* Dark mode */
@@ -91,23 +100,34 @@ body.dark-mode .message.success {
   color: black;
 }
 
-/* Login/Cadastro box */
-.login-container {
+/* Conteúdo principal - container centralizado */
+.container {
+  flex: 1 0 auto; /* cresce e ocupa o espaço entre header e footer */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  min-height: 80vh;
+  flex-direction: column;
+  justify-content: center; /* centraliza verticalmente */
+  align-items: center;     /* centraliza horizontalmente */
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 0;
 }
 
-.login-box {
+/* Seções dentro do container */
+.section {
   width: 100%;
   max-width: 400px;
-  padding: 30px;
+  padding: 20px;
   background-color: #f4f4f4;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: none;
+  box-sizing: border-box;
+  color: #333;
+}
+
+/* Para deixar visível a seção ativa no index */
+.section#tradutor {
+  display: block;
 }
 
 /* Inputs e botões */
@@ -119,6 +139,7 @@ input[type="password"] {
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid #161313;
+  box-sizing: border-box;
 }
 
 button {
@@ -186,7 +207,7 @@ button:hover {
   padding: 10px;
   z-index: 10;
   min-width: 120px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   transition: opacity 0.3s ease;
 }
 
@@ -211,19 +232,13 @@ body.dark-mode .dropdown button:hover {
   background-color: #333;
 }
 
-/* Seções */
-.section {
-  padding: 20px;
-  display: none;
-}
-
 /* Lista de sugestões */
 #suggestionsList {
   margin-top: 20px;
   padding: 10px;
   background-color: #fafafa;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 body.dark-mode #suggestionsList {
@@ -232,10 +247,11 @@ body.dark-mode #suggestionsList {
 
 /* Footer */
 .footer {
-  text-align: center;
-  padding: 15px;
+  flex-shrink: 0; /* não encolhe */
   background-color: #4a0072;
   color: white;
+  text-align: center;
+  padding: 15px;
 }
 
 /* Responsividade */
@@ -250,12 +266,17 @@ body.dark-mode #suggestionsList {
     width: 100%;
   }
 
-  .login-container {
-    padding: 20px;
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
   }
 
-  .dropdown {
-    right: auto;
-    left: 0;
+  .container {
+    padding: 10px;
+  }
+
+  .section {
+    max-width: 100%;
   }
 }
