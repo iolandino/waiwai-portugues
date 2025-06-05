@@ -22,9 +22,9 @@
       <button id="darkModeToggle" aria-label="Ativar modo escuro">🌙</button>
 
       <!-- Menu do Perfil -->
-      <div class="profile-menu" id="profileMenu" style="display: none;">
-        <img src="profile.png" alt="Imagem de perfil" class="profile-pic" onclick="toggleDropdown()" />
-        <ul class="dropdown" id="dropdownMenu">
+      <div class="profile-menu" id="profileMenu" aria-hidden="true">
+        <img src="profile.png" alt="Imagem de perfil" class="profile-pic" onclick="toggleDropdown()" tabindex="0" />
+        <ul class="dropdown" id="dropdownMenu" hidden>
           <li><a href="traduzir.html">Traduzir</a></li>
           <li><a href="sugerir.html">Sugerir</a></li>
           <li><a href="contato.html">Contato</a></li>
@@ -36,7 +36,7 @@
 
   <!-- Conteúdo Principal -->
   <main class="container">
-    <section class="section" id="tradutor" style="display: block;">
+    <section class="section" id="tradutor">
       <h2>Traduzir do Português para Wai Wai</h2>
       <input type="text" id="translateInput" placeholder="Digite a palavra em Português" />
       <button onclick="translate()">Traduzir</button>
@@ -44,12 +44,12 @@
       <div id="message"></div>
     </section>
 
-    <section class="section" id="cadastro" style="display: none;">
+    <section class="section" id="cadastro" hidden>
       <h2>Sugerir Novo Termo</h2>
       <input type="text" id="suggestPt" placeholder="Palavra em Português" />
       <input type="text" id="suggestWai" placeholder="Palavra em Wai Wai" />
       <button onclick="submitSuggestion()">Enviar Sugestão</button>
-      <div id="message"></div>
+      <div id="messageSuggestion"></div>
       <div id="suggestionsList" style="margin-top: 20px;"></div>
     </section>
   </main>
