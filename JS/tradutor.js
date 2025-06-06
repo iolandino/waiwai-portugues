@@ -7,9 +7,9 @@ const inputSuggestWai = document.getElementById('suggestWai');
 
 // Dicionário de traduções dummy
 const dummyTranslations = {
-  "universidade": "wai-universi",
-  "livro": "wai-libru",
-  "aula": "wai-aura"
+  "universidade": "miyahxixakehcamhokatopo",
+  "livro": "karita",
+  "aula": "kehcamhokatopo"
 };
 
 // Função para traduzir termo
